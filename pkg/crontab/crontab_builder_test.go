@@ -45,6 +45,16 @@ func TestGetName(t *testing.T) {
 	}
 }
 
+func TestGetKind(t *testing.T) {
+	kind, err := Get("../../test/environment/namespace1/test_deployment.yaml", "kind")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if kind != "Deployment" {
+		t.Fatal("failed test")
+	}
+}
+
 func TestBuild(t *testing.T) {
 	files := []string{"../../test/environment/namespace1/test_cronjob1.yaml", "../../test/environment/namespace2/test_cronjob2.yml"}
 	crontab, err := Build(files)

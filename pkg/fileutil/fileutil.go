@@ -23,6 +23,8 @@ package fileutil
 
 import (
 	"github.com/bmatcuk/doublestar/v3"
+	"github.com/ohkinozomu/cronjov/pkg/crontab"
+	"github.com/thoas/go-funk"
 )
 
 func GetYamls(dir string) ([]string, error) {
@@ -30,5 +32,10 @@ func GetYamls(dir string) ([]string, error) {
 	if err != nil {
 		return nil, nil
 	}
-	return files, nil
+	r := funk.FilterString(files, func(file string) bool {
+		// TODO: error handling
+		kind, _ := crontab.Get(file, "kind")
+		return kind == "CronJob"
+	})
+	return r, nil
 }

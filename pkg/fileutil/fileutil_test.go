@@ -35,7 +35,7 @@ func TestGetYamls(t *testing.T) {
 		t.Fatal("failed test")
 	}
 	if files[1] != "../../test/environment/namespace2/test_cronjob2.yml" {
-		t.Log(files[0])
+		t.Log(files[1])
 		t.Fatal("failed test")
 	}
 }

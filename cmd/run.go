@@ -25,12 +25,22 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/spf13/cobra"
 	"github.com/takumakanari/cronv"
 
 	"github.com/ohkinozomu/cronjov/pkg/crontab"
 	"github.com/ohkinozomu/cronjov/pkg/fileutil"
+)
+
+const (
+	optDateFormat        = "2006/01/02"
+	optTimeFormat        = "15:04"
+	optDefaultDuration   = "24h"
+	optDefaultOutputPath = "./crontab.html"
+	optDefaultTitle      = "Cron Tasks"
+	optDefaultWidth      = 100
 )
 
 // runCmd represents the run command
@@ -53,7 +63,18 @@ to quickly create a Cobra application.`,
 			fmt.Println("set --dir")
 			os.Exit(1)
 		}
-		opts := cronv.NewCronvCommand()
+
+		t := time.Now()
+		now := time.Date(t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), 0, 0, time.UTC)
+		opts := &cronv.Command{
+			OutputFilePath: optDefaultOutputPath,
+			Duration:       optDefaultDuration,
+			FromDate:       now.Format(optDateFormat),
+			FromTime:       now.Format(optTimeFormat),
+			Title:          optDefaultTitle,
+			Width:          optDefaultWidth,
+		}
+
 		ctx, err := cronv.NewCtx(opts)
 		if err != nil {
 			fmt.Println(err)

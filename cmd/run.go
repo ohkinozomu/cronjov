@@ -27,6 +27,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/skratchdot/open-golang/open"
 	"github.com/spf13/cobra"
 	"github.com/takumakanari/cronv"
 
@@ -106,6 +107,7 @@ to quickly create a Cobra application.`,
 		}
 		fmt.Printf("[%s] %d tasks.\n", opts.Title, len(ctx.CronEntries))
 		fmt.Printf("[%s] '%s' generated.\n", opts.Title, path)
+		open.Run(path)
 	},
 }
 

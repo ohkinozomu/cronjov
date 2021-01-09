@@ -9,7 +9,7 @@ powered by [takumakanari/cronv](https://github.com/takumakanari/cronv)
 ```
 $ git clone https://github.com/ohkinozomu/cronjov
 $ cd cronjov
-$ go run main.go --dir path/to/manifests
+$ go run main.go run --dir path/to/manifests
 ```
 
 ## Status

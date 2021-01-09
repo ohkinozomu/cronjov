@@ -2,8 +2,6 @@
 
 Kubernetes CronJob visualization tool
 
-powered by [takumakanari/cronv](https://github.com/takumakanari/cronv)
-
 ## Use
 
 ```

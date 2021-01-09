@@ -27,9 +27,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/ohkinozomu/cronv"
 	"github.com/skratchdot/open-golang/open"
 	"github.com/spf13/cobra"
-	"github.com/takumakanari/cronv"
 
 	"github.com/ohkinozomu/cronjov/pkg/crontab"
 	"github.com/ohkinozomu/cronjov/pkg/fileutil"
